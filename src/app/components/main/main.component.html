@@ -1,0 +1,14 @@
+
+<mat-toolbar >Main</mat-toolbar>
+<mat-card>
+    
+    @for (transaction of jsonarray;track transaction.id){
+        <app-transaction [transaction]="transaction"></app-transaction>
+    } @empty {
+        <li>there are no items</li>
+    }
+    <mat-card-actions>
+        <button mat-button (click)="getall()">Get All</button>
+
+    </mat-card-actions>
+</mat-card>

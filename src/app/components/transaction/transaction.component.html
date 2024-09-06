@@ -1,0 +1,19 @@
+<mat-card>
+    <form [formGroup]="transactionform" class="fields">
+        <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>n01</mat-label>
+            <input matInput formControlName="n01">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>s01</mat-label>
+            <input matInput formControlName="s01">
+        </mat-form-field>
+    </form>
+    <mat-card-actions>
+        <button mat-button (click)="update(transactionform)">Update Transaction</button>
+    </mat-card-actions>
+</mat-card>
