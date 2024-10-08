@@ -1,14 +1,23 @@
 
 <mat-toolbar >Main</mat-toolbar>
+@if(working){
+    <mat-progress-bar></mat-progress-bar>
+}
 <mat-card>
     
-    @for (transaction of jsonarray;track transaction.id){
-        <app-transaction [transaction]="transaction"></app-transaction>
-    } @empty {
+    @for (transaction of jsonarray;track transaction.id;let index = $index){
+        <mat-divider></mat-divider>
+        
+        
+        <app-transaction [transaction]="transaction" (refresh)="getall()"></app-transaction>
+    } 
+    @empty {
         <li>there are no items</li>
     }
+    
     <mat-card-actions>
         <button mat-button (click)="getall()">Get All</button>
+        <button mat-button (click)="createnew()">Create New File</button>
 
     </mat-card-actions>
 </mat-card>

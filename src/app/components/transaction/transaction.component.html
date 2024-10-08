@@ -1,19 +1,86 @@
 <mat-card>
+
+    @if(!isShow) {
+    <button mat-icon-button (click)=toggleDisplay()><mat-icon>keyboard_arrow_down</mat-icon></button>
+    } @else {
+    <button mat-icon-button (click)=toggleDisplay()><mat-icon>keyboard_arrow_up</mat-icon></button>
+
+    }
+    @if(!isShow){
+    <div [innerHtml]="transactionform.value.s02              | markdownToHtml"></div>
+    <div [innerHtml]="transactionform.value.s03              | markdownToHtml"></div>
+    <!-- <div [innerHtml]="doc              | markdownToHtml"></div> -->
+    <!-- <div [innerHtml]="transactionform.value.s04              | upperCaseFirst"></div> -->
+    <!-- {{ transactionform.value.s04 | upperCaseFirst }} -->
+
+
+
+    } @else{
     <form [formGroup]="transactionform" class="fields">
-        <mat-form-field>
-            <mat-label>ID</mat-label>
-            <input matInput formControlName="id">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>n01</mat-label>
-            <input matInput formControlName="n01">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>s01</mat-label>
-            <input matInput formControlName="s01">
-        </mat-form-field>
+        
+        <div class="row">
+            <div [innerHtml]="transactionform.value.s02              | markdownToHtml"></div>
+
+            <mat-form-field>
+                <mat-label>section s03</mat-label>
+                <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="9" type="text" formControlName="s02"></textarea>
+            </mat-form-field>
+            
+        </div>
+
+        
+        <div class="row">
+            <div [innerHtml]="transactionform.value.s03              | markdownToHtml"></div>
+
+            <mat-form-field>
+                <mat-label>section s03</mat-label>
+                <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="9" type="text" formControlName="s03"></textarea>
+
+                
+            </mat-form-field>
+            
+        </div>
+        <div>
+            <div [innerHtml]="transactionform.value.s04              | markdownToHtml"></div>
+
+            <mat-form-field>
+                <mat-label>section s04</mat-label>
+                <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="9" type="text" formControlName="s04"></textarea>
+
+                
+            </mat-form-field>
+           <!-- {{ transactionform.value.s04 | upperCaseFirst }} -->
+            
+        </div>
+
     </form>
+    
+
+
+    <p>last updated: {{ transactionform.value.lastupdate | relativeTime }}</p>
     <mat-card-actions>
-        <button mat-button (click)="update(transactionform)">Update Transaction</button>
+        <button mat-button (click)="update(transactionform)">Update form</button>
     </mat-card-actions>
+
+
+
+
+    }
 </mat-card>
+
+
+<!-- <div [hidden] = "!isShow">
+        <form [formGroup]="transactionform" class="fields">
+
+
+        <mat-form-field>
+            <mat-label>section 1</mat-label>
+            <textarea matInput type="text" formControlName="s02"></textarea>
+        </mat-form-field>
+        <p>last updated: {{ transactionform.value.lastupdate | relativeTime }}</p>
+        <mat-card-actions>
+            <button mat-button (click)="update(transactionform)">Update Note</button>
+        </mat-card-actions>
+
+    </form>
+</div> -->
